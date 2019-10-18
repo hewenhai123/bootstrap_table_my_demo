@@ -1,0 +1,260 @@
+<!doctype html>
+<html >
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hello, Bootstrap Table!</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+</head>
+<body>
+<style type="text/css">
+  html,body{
+      height: 100%;
+  }
+    .box{
+
+        width: 800px;
+        margin: 40px auto;
+    }
+
+</style>
+
+<div class="box">
+
+
+<table id="table"  >
+    <thead>
+    <tr>
+        <th>Item ID</th>
+        <th>Item Name</th>
+        <th>Item Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>Item 1</td>
+        <td>$1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Item 2</td>
+        <td>$2</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#table').bootstrapTable({
+            url:'/data1.json',
+            pagination: true,
+            search: true,
+            height:400,
+            sortable:true,
+            showColumns:"true",
+            columns: [{
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'name',
+                title: 'Item Name'
+            }, {
+                field: 'price',
+                title: 'Item Price'
+            }],
+
+            // data: [{
+            //     id: 1,
+            //     name: 'Item 1',
+            //     price: '$1'
+            // }, {
+            //     id: 2,
+            //     name: 'Item 2',
+            //     price: '$2'
+            // }]
+        })
+
+
+
+
+
+
+
+
+
+
+        // var $table = $('#table')
+        // var $remove = $('#remove')
+        // var selections = []
+        //
+        // function getIdSelections() {
+        //     return $.map($table.bootstrapTable('getSelections'), function (row) {
+        //         return row.id
+        //     })
+        // }
+        //
+        // function responseHandler(res) {
+        //     $.each(res.rows, function (i, row) {
+        //         row.state = $.inArray(row.id, selections) !== -1
+        //     })
+        //     return res
+        // }
+        //
+        // function detailFormatter(index, row) {
+        //     var html = []
+        //     $.each(row, function (key, value) {
+        //         html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+        //     })
+        //     return html.join('')
+        // }
+        //
+        // function operateFormatter(value, row, index) {
+        //     return [
+        //         '<a class="like" href="javascript:void(0)" title="Like">',
+        //         '<i class="fa fa-heart"></i>',
+        //         '</a>  ',
+        //         '<a class="remove" href="javascript:void(0)" title="Remove">',
+        //         '<i class="fa fa-trash"></i>',
+        //         '</a>'
+        //     ].join('')
+        // }
+        //
+        // window.operateEvents = {
+        //     'click .like': function (e, value, row, index) {
+        //         alert('You click like action, row: ' + JSON.stringify(row))
+        //     },
+        //     'click .remove': function (e, value, row, index) {
+        //         $table.bootstrapTable('remove', {
+        //             field: 'id',
+        //             values: [row.id]
+        //         })
+        //     }
+        // }
+        //
+        // function totalTextFormatter(data) {
+        //     return 'Total'
+        // }
+        //
+        // function totalNameFormatter(data) {
+        //     return data.length
+        // }
+        //
+        // function totalPriceFormatter(data) {
+        //     var field = this.field
+        //     return '$' + data.map(function (row) {
+        //         return +row[field].substring(1)
+        //     }).reduce(function (sum, i) {
+        //         return sum + i
+        //     }, 0)
+        // }
+        //
+        // function initTable() {
+        //     $table.bootstrapTable('destroy').bootstrapTable({
+        //         height: 550,
+        //         locale: $('#locale').val(),
+        //         columns: [
+        //             [{
+        //                 field: 'state',
+        //                 checkbox: true,
+        //                 rowspan: 2,
+        //                 align: 'center',
+        //                 valign: 'middle'
+        //             }, {
+        //                 title: 'Item ID',
+        //                 field: 'id',
+        //                 rowspan: 2,
+        //                 align: 'center',
+        //                 valign: 'middle',
+        //                 sortable: true,
+        //                 footerFormatter: totalTextFormatter
+        //             }, {
+        //                 title: 'Item Detail',
+        //                 colspan: 3,
+        //                 align: 'center'
+        //             }],
+        //             [{
+        //                 field: 'name',
+        //                 title: 'Item Name',
+        //                 sortable: true,
+        //                 footerFormatter: totalNameFormatter,
+        //                 align: 'center'
+        //             }, {
+        //                 field: 'price',
+        //                 title: 'Item Price',
+        //                 sortable: true,
+        //                 align: 'center',
+        //                 footerFormatter: totalPriceFormatter
+        //             }, {
+        //                 field: 'operate',
+        //                 title: 'Item Operate',
+        //                 align: 'center',
+        //                 clickToSelect: false,
+        //                 events: window.operateEvents,
+        //                 formatter: operateFormatter
+        //             }]
+        //         ]
+        //     })
+        //     $table.on('check.bs.table uncheck.bs.table ' +
+        //         'check-all.bs.table uncheck-all.bs.table',
+        //         function () {
+        //             $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+        //
+        //             // save your data, here just save the current page
+        //             selections = getIdSelections()
+        //             // push or splice the selections if you want to save all data selections
+        //         })
+        //     $table.on('all.bs.table', function (e, name, args) {
+        //         console.log(name, args)
+        //     })
+        //     $remove.click(function () {
+        //         var ids = getIdSelections()
+        //         $table.bootstrapTable('remove', {
+        //             field: 'id',
+        //             values: ids
+        //         })
+        //         $remove.prop('disabled', true)
+        //     })
+        // }
+        //
+        // function mounted() {
+        //     initTable()
+        //
+        //     $('#locale').change(initTable)
+        // }
+
+
+
+
+
+
+
+
+
+
+
+    })
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
